@@ -1,0 +1,37 @@
+.input-link-panel{
+    width: 500px;
+    margin: 50px auto 0;
+}
+
+.link-statistic-panel{
+    width: 500px;
+    margin: 10px auto 0;
+}
+
+.statistic-panel{
+    width: 800px;
+    margin: 50px auto 0;
+}
+
+.app-logo{
+    font-size: 100px;
+    text-align: center;
+}
+
+.stat-logo{
+    font-size: 50px;
+    text-align: center;
+}
+
+.short-link-container{
+    margin: 20px;
+}
+
+.short-link-label{
+    color: darkblue;
+    font-weight: bold;
+}
+
+.statistic-url-form{
+    margin: 20px;
+}
