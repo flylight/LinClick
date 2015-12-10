@@ -2,6 +2,9 @@
  * Created by arymar on 10.12.15.
  */
 
+$(function() {
+
+});
 
 function getShortLink(){
     var originalUrl = $("#originalUrl").val();
@@ -33,7 +36,9 @@ function getStatistic(){
     var statZone = $("#statistic-zone");
 
     workZone.fadeOut(500, function(){
-        statZone.fadeIn(500);
+        statZone.fadeIn(500, function(){
+            $("#map-container").datamaps();
+        });
     });
 
     return false;
