@@ -1,9 +1,15 @@
 package org.ar.linclick.services;
 
+import org.ar.linclick.entity.ClientInfo;
+
 /**
  * Created by arymar on 10.12.15.
  */
 public interface LinkService {
-  void saveLink(String originalLink, String shortLink);
-  String getOriginalByShort(String shortLink);
+
+  void saveLink(String originalLink, String shortUrlId);
+
+  String getOriginalByShort(String shortUrlId);
+
+  void saveClientInfo(String shortUrlId, ClientInfo clientInfo);
 }

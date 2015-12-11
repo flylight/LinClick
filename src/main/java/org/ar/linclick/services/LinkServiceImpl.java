@@ -1,9 +1,10 @@
 package org.ar.linclick.services;
 
+import org.ar.linclick.dao.ClientInfoDao;
+import org.ar.linclick.dao.LinkDao;
+import org.ar.linclick.entity.ClientInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by arymar on 10.12.15.
@@ -11,16 +12,25 @@ import java.util.Map;
 
 @Service
 public class LinkServiceImpl implements LinkService {
-  private static final Map<String, String> database = new HashMap<>();
 
+  @Autowired
+  private ClientInfoDao clientInfoDAO;
+
+  @Autowired
+  private LinkDao linkDAO;
 
   @Override
-  public void saveLink(String originalLink, String shortLink) {
-    database.put(shortLink, originalLink);
+  public void saveLink(String originalLink, String shortUrlId) {
+    linkDAO.saveOriginalUrl(shortUrlId, originalLink);
   }
 
   @Override
-  public String getOriginalByShort(String shortLink) {
-    return database.get(shortLink);
+  public String getOriginalByShort(String shortUrlId) {
+    return linkDAO.loadOriginalUrlByShortUrlId(shortUrlId);
   }
+
+  @Override public void saveClientInfo(String shortUrlId, ClientInfo clientInfo) {
+    clientInfoDAO.saveClientInfo(shortUrlId, clientInfo);
+  }
+
 }
