@@ -2,10 +2,12 @@ package org.ar.linclick.dto;
 
 import org.springframework.http.HttpStatus;
 
+import java.io.Serializable;
+
 /**
  * Created by arymar on 10.12.15.
  */
-public class HttpResponse<T> {
+public class HttpResponse<T>  implements Serializable{
 
   private HttpStatus status;
   private T data;

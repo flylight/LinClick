@@ -35,7 +35,7 @@
                 <form onsubmit="return getStatistic();">
                     <div class="input-group statistic-url-form">
                         <span class="input-group-addon">Short URL</span>
-                        <input id="shortUrlStat" pattern=".*:(\d{4}|)//.*" type="text" class="form-control" placeholder="Paste your short link here" required="true"/>
+                        <input id="shortUrlStat" pattern="(http|https)://.*/lc/.*" type="text" class="form-control" placeholder="Paste your short link here" required="true"/>
                     </div>
                     <button type="submit" class="btn btn-primary">Show statistic</button>
                 </form>
@@ -44,7 +44,7 @@
     </div>
 
     <div id="statistic-zone" hidden="true">
-        <h1>∑ = 1283534521425 Clicks</h1>
+        <h1>∑ = <span id="totalClicks">0</span> Clicks</h1>
         <div class="statistic-panel">
             <div id="map-container" class="panel panel-default" style="height: 300px;">
             </div>
@@ -53,15 +53,15 @@
                     <div class="thumbnail">
                         <img src="img/phones.png" alt="Phones"/>
                         <div class="caption">
-                            <h2>40%</h2>
-                            <h5>21313432 clicks</h5>
+                            <h2><span id="phonePart">0</span>%</h2>
+                            <h5><span id="phoneClicks">0</span> clicks</h5>
                             <div class="media">
                                 <div class="media-left">
                                     <img class="media-object" src="img/android.png" alt="Android devices"/>
                                 </div>
                                 <div class="media-body">
-                                    <h3>30%</h3>
-                                    <h6>21313432 clicks</h6>
+                                    <h3><span id="phoneAndroidPart">0</span>%</h3>
+                                    <h6><span id="phoneAndroidClicks">0</span> clicks</h6>
                                 </div>
                             </div>
 
@@ -70,8 +70,8 @@
                                     <img class="media-object" src="img/ios.png" alt="iOS devices"/>
                                 </div>
                                 <div class="media-body">
-                                    <h3>50%</h3>
-                                    <h6>21313432 clicks</h6>
+                                    <h3><span id="phoneIOSPart">0</span>%</h3>
+                                    <h6><span id="phoneIOSClicks">0</span> clicks</h6>
                                 </div>
                             </div>
 
@@ -80,8 +80,8 @@
                                     <img class="media-object" src="img/winmobile.png" alt="Windows Mobile devices"/>
                                 </div>
                                 <div class="media-body">
-                                    <h3>10%</h3>
-                                    <h6>21313432 clicks</h6>
+                                    <h3><span id="phoneWinmobPart">0</span>%</h3>
+                                    <h6><span id="phoneWinmobClicks">0</span> clicks</h6>
                                 </div>
                             </div>
 
@@ -90,8 +90,8 @@
                                     <img class="media-object" src="img/javamob.png" alt="Java Mobile devices"/>
                                 </div>
                                 <div class="media-body">
-                                    <h3>8%</h3>
-                                    <h6>21313432 clicks</h6>
+                                    <h3><span id="phoneJavaPart">0</span>%</h3>
+                                    <h6><span id="phoneJavaClicks">0</span> clicks</h6>
                                 </div>
                             </div>
 
@@ -100,8 +100,8 @@
                                     <img class="media-object" src="img/unknown.png" alt="Unknown devices"/>
                                 </div>
                                 <div class="media-body">
-                                    <h3>2%</h3>
-                                    <h6>21313432 clicks</h6>
+                                    <h3><span id="phoneUnknownPart">0</span>%</h3>
+                                    <h6><span id="phoneUnknownClicks">0</span> clicks</h6>
                                 </div>
                             </div>
 
@@ -113,15 +113,15 @@
                     <div class="thumbnail">
                         <img src="img/pc.png" alt="PC"/>
                         <div class="caption">
-                            <h2>60%</h2>
-                            <h5>21313432 clicks</h5>
+                            <h2><span id="pcPart">0</span>%</h2>
+                            <h5><span id="pcClicks">0</span> clicks</h5>
                             <div class="media">
                                 <div class="media-left">
                                     <img class="media-object" src="img/linux.png" alt="Linux PC"/>
                                 </div>
                                 <div class="media-body">
-                                    <h3>20%</h3>
-                                    <h6>21313432 clicks</h6>
+                                    <h3><span id="pcLinuxPart">0</span>%</h3>
+                                    <h6><span id="pcLinuxClicks">0</span> clicks</h6>
                                 </div>
                             </div>
 
@@ -130,8 +130,8 @@
                                     <img class="media-object" src="img/macos.png" alt="MacOS PC"/>
                                 </div>
                                 <div class="media-body">
-                                    <h3>30%</h3>
-                                    <h6>21313432 clicks</h6>
+                                    <h3><span id="pcMacosPart">0</span>%</h3>
+                                    <h6><span id="pcMacosClicks">0</span> clicks</h6>
                                 </div>
                             </div>
 
@@ -140,8 +140,8 @@
                                     <img class="media-object" src="img/windows.png" alt="Windows PC"/>
                                 </div>
                                 <div class="media-body">
-                                    <h3>40%</h3>
-                                    <h6>21313432 clicks</h6>
+                                    <h3><sapan id="pcWindowsPart">0</sapan>%</h3>
+                                    <h6><span id="pcWindowsClicks">0</span> clicks</h6>
                                 </div>
                             </div>
 
@@ -150,8 +150,8 @@
                                     <img class="media-object" src="img/unknown.png" alt="Unknown devices"/>
                                 </div>
                                 <div class="media-body">
-                                    <h3>10%</h3>
-                                    <h6>21313432 clicks</h6>
+                                    <h3><span id="pcUnknownPart">0</span>%</h3>
+                                    <h6><span id="pcUnknownClicks">0</span> clicks</h6>
                                 </div>
                             </div>
 
@@ -160,6 +160,22 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div id="waitModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body" style="text-align: center">
+                <p><h2>Wait please!</h2></p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 

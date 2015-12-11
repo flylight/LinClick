@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 
 /**
  * Created by arymar on 09.12.15.
@@ -32,7 +31,7 @@ public class MainController {
   @ResponseBody
   public HttpResponse<String> getShortUrlBasedOnOriginal(@RequestParam String originalUrl, HttpServletRequest request)
       throws UnsupportedEncodingException {
-    String shortUrl = LinkUtil.gererateRundomShortUrlIdentifier();
+    String shortUrl = LinkUtil.generateRundomShortUrlIdentifier();
     linkService.saveLink(originalUrl, shortUrl);
     return new HttpResponse<>(HttpStatus.OK, LinkUtil.generateCorrectShortURL(request
         .getRequestURL(), request.getRequestURI(), shortUrl));
