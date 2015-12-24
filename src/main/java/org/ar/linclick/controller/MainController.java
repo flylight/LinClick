@@ -36,5 +36,4 @@ public class MainController {
     return new HttpResponse<>(HttpStatus.OK, LinkUtil.generateCorrectShortURL(request
         .getRequestURL(), request.getRequestURI(), shortUrl));
   }
-
 }
