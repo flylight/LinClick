@@ -15,7 +15,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.3.0.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 
 	<properties>
@@ -23,6 +23,10 @@
 		<java.version>1.8</java.version>
 		<org.webjars.bootstrap.version>3.3.4</org.webjars.bootstrap.version>
 		<org.webjars.jquery.version>2.1.3</org.webjars.jquery.version>
+		<apache.commons>3.4</apache.commons>
+		<apache.cassandra>2.1.7.1</apache.cassandra>
+		<apache.spark>1.5.2</apache.spark>
+		<fasterxml.jackson>2.6.3</fasterxml.jackson>
 	</properties>
 
 	<dependencies>
@@ -57,19 +61,19 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.4</version>
+			<version>${apache.commons}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.datastax.cassandra</groupId>
 			<artifactId>cassandra-driver-core</artifactId>
-			<version>2.1.7.1</version>
+			<version>${apache.cassandra}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.spark</groupId>
 			<artifactId>spark-core_2.10</artifactId>
-			<version>1.5.2</version>
+			<version>${apache.spark}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>
@@ -101,12 +105,12 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.6.3</version>
+			<version>${fasterxml.jackson}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.module</groupId>
 			<artifactId>jackson-module-scala_2.10</artifactId>
-			<version>2.6.3</version>
+			<version>${fasterxml.jackson}</version>
 		</dependency>
 
 	</dependencies>
