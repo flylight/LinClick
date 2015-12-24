@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>Link Click</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Click analytic system</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
