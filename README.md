@@ -1,4 +1,4 @@
-##This project still in process, it save but return only stabby data for now (release date 07/01/2016)
+##This project still in development, it save but return only stabby data for now (release date 07/01/2016)
 
 # LinClick
 Link click - analytic data based on collected HTTP headers retrieved from redirection flow via provided short URL instead of original. 
