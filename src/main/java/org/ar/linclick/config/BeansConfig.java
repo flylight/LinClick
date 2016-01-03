@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * Created by arymar on 11.12.15.
  */
 @Configuration
-public class Beans {
+public class BeansConfig {
 
   @Bean
   public Session databaseSession(){
