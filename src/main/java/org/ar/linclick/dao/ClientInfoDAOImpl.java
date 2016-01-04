@@ -4,6 +4,7 @@ import com.datastax.driver.core.PreparedStatement;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
+import org.ar.linclick.entity.ClientDevice;
 import org.ar.linclick.entity.ClientInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,7 +37,9 @@ public class ClientInfoDaoImpl implements ClientInfoDao {
     ResultSet resultSet = databaseSession.execute(statement.bind(shortUrlId));
     for(Row row : resultSet.all()){
       ClientInfo clientInfo = new ClientInfo();
-
+      clientInfo.setClientDevice(
+          new ClientDevice(row.getString("os_platform"), row.getString("os_name")));
+      clientInfo.setIp(row.getString("ip"));
       result.add(clientInfo);
     }
     return result;

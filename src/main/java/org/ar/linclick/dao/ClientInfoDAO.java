@@ -12,5 +12,4 @@ public interface ClientInfoDao {
   void saveClientInfo(String shortUrlId, ClientInfo clientInfo);
 
   List<ClientInfo> loadClientInfoByShortUrlId(String shortUrlId);
-
 }
