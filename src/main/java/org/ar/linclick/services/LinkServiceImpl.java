@@ -6,6 +6,7 @@ import org.ar.linclick.entity.ClientInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 /**
  * Created by arymar on 10.12.15.
  */
@@ -29,7 +30,8 @@ public class LinkServiceImpl implements LinkService {
     return linkDAO.loadOriginalUrlByShortUrlId(shortUrlId);
   }
 
-  @Override public void saveClientInfo(String shortUrlId, ClientInfo clientInfo) {
+  @Override
+  public void saveClientInfo(String shortUrlId, ClientInfo clientInfo) {
     clientInfoDAO.saveClientInfo(shortUrlId, clientInfo);
   }
 

@@ -2,7 +2,9 @@ package org.ar.linclick.controller;
 
 import org.ar.linclick.dto.HttpResponse;
 import org.ar.linclick.dto.Statistic;
+import org.ar.linclick.services.StatisticService;
 import org.ar.linclick.util.LinkUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,12 +20,17 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/statistic")
 public class StatisticController {
 
+  @Autowired
+  private StatisticService statisticService;
+
+
   @RequestMapping("calculate")
   @ResponseBody
   public HttpResponse<Statistic> getStatisticByShortUrl( @RequestParam String shortUrl, HttpServletRequest request){
     String uniqueLinkId = LinkUtil.normalizeUniqueLinkFromShortLink(shortUrl,
         request.getRequestURL(), request.getRequestURI());
 
+    Statistic stat = statisticService.getStatisticByShortUlrId(uniqueLinkId);
 
     Statistic stubbyStatistic = new Statistic();
     stubbyStatistic.setTotalClicks(500);

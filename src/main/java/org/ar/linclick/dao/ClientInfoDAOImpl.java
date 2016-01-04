@@ -1,11 +1,14 @@
 package org.ar.linclick.dao;
 
 import com.datastax.driver.core.PreparedStatement;
+import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Session;
 import org.ar.linclick.entity.ClientInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,6 +30,15 @@ public class ClientInfoDaoImpl implements ClientInfoDao {
 
   @Override
   public List<ClientInfo> loadClientInfoByShortUrlId(String shortUrlId) {
-    return null;
+    List<ClientInfo> result = new ArrayList<>();
+    PreparedStatement statement = databaseSession
+        .prepare("SELECT date, shortUrlId, ip, os_name, os_platform FROM devices WHERE shortUrlId=?");
+    ResultSet resultSet = databaseSession.execute(statement.bind(shortUrlId));
+    for(Row row : resultSet.all()){
+      ClientInfo clientInfo = new ClientInfo();
+
+      result.add(clientInfo);
+    }
+    return result;
   }
 }
