@@ -1,4 +1,4 @@
-##This project still in development, it save but return only stabby data for now (release date 07/01/2016)
+##ALL CALCULATION EXCEPT GOE MAP WORKS! 
 
 # LinClick
 Link click - analytic data based on collected HTTP headers retrieved from redirection flow via provided short URL instead of original. 
@@ -68,4 +68,4 @@ If you scroll down you will see detailed statistic about user devices:
 ![Link clicks detailed statistic](http://s11.postimg.org/bxuala203/detailed_map.png) 
 
 
-NOTICE: All data in this documentation was hardcoded on backend just to provide correct view, but calculation can be not correctly.
+NOTICE: All calculations works except GEO MAP. GEO MAP part still in development!
