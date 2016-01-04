@@ -7,12 +7,14 @@ import org.ar.linclick.dto.Statistic;
 import org.ar.linclick.entity.ClientInfo;
 import org.ar.linclick.util.UserAgentUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by arymar on 04.01.16.
  */
+@Service
 public class StatisticServiceImpl implements StatisticService {
 
   @Autowired
@@ -48,11 +50,12 @@ public class StatisticServiceImpl implements StatisticService {
     //Calculate all phone statistic
     calculatePhoneStatistic(statistic, phoneClicks);
     //Calculate PC statistic
-    calculatePcStatistic(statistic, phoneClicks);
-
-    //Calculate percentage parts
+    calculatePcStatistic(statistic, pcClicks);
+    //Calculate Percentages
     calculatePercentageParts(statistic);
 
+    //TODO Implement ... EMPTY (For now)
+    statistic.setSeries(new Object[0][0]);
     return statistic;
   }
 
@@ -90,7 +93,31 @@ public class StatisticServiceImpl implements StatisticService {
   }
 
   public void calculatePercentageParts(Statistic statistic){
-    statistic.setPhonePart((statistic.getPhoneClicks() / statistic.getTotalClicks())*100);
-    statistic.setPcPart((statistic.getPhoneClicks() / statistic.getTotalClicks())*100);
+    if(statistic.getTotalClicks() > 0) {
+      statistic.setPhonePart((statistic.getPhoneClicks() / statistic.getTotalClicks()) * 100);
+      statistic.setPcPart((statistic.getPcClicks() / statistic.getTotalClicks()) * 100);
+      if(statistic.getPhoneClicks() > 0){
+        statistic.setPhoneAndroidPart(
+            (int)((statistic.getPhoneAndroidClicks() / (double) statistic.getPhoneClicks()) * 100));
+        statistic.setPhoneWinmobPart(
+            (int)((statistic.getPhoneWinmobClicks() / (double) statistic.getPhoneClicks()) * 100));
+        statistic.setPhoneIOSPart(
+            (int)((statistic.getPhoneIOSClicks() / (double) statistic.getPhoneClicks()) * 100));
+        statistic.setPhoneJavaPart(
+            (int)((statistic.getPhoneJavaClicks() / (double) statistic.getPhoneClicks()) * 100));
+        statistic.setPhoneUnknownPart(
+            (int)((statistic.getPhoneUnknownClicks() / (double) statistic.getPhoneClicks()) * 100));
+      }
+      if(statistic.getPcClicks() > 0) {
+        statistic.setPcWindowsPart(
+            (int)((statistic.getPcWindowsClicks() / (double) statistic.getPcClicks()) * 100));
+        statistic.setPcLinuxPart(
+            (int)((statistic.getPcLinuxClicks() / (double) statistic.getPcClicks()) * 100));
+        statistic.setPcMacosPart(
+            (int)((statistic.getPcMacosClicks() / (double) statistic.getPcClicks()) * 100));
+        statistic.setPcUnknownPart(
+            (int)((statistic.getPcUnknownClicks() / (double) statistic.getPcClicks()) * 100));
+      }
+    }
   }
 }

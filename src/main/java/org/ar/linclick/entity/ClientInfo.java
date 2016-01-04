@@ -1,9 +1,11 @@
 package org.ar.linclick.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by arymar on 11.12.15.
  */
-public class ClientInfo {
+public class ClientInfo implements Serializable{
   private String ip;
   private ClientDevice clientDevice;
 
