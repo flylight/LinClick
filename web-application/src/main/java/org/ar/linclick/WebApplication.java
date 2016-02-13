@@ -1,9 +1,8 @@
 package org.ar.linclick;
 
+import com.google.common.net.HttpHeaders;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import org.apache.commons.httpclient.HttpStatus;
-import org.ar.linclick.AppInjector;
 import org.ar.linclick.dto.HttpResponse;
 import org.ar.linclick.entity.ClientInfo;
 import org.ar.linclick.entity.Statistic;
@@ -11,12 +10,7 @@ import org.ar.linclick.services.LinkService;
 import org.ar.linclick.services.StatisticService;
 import org.ar.linclick.util.IpUtils;
 import org.ar.linclick.util.LinkUtil;
-import org.ar.linclick.util.UserAgentUtil;
-import spark.Request;
-import spark.Response;
-import spark.Route;
-
-import javax.ws.rs.core.HttpHeaders;
+import org.ar.linclick.utils.UserAgentUtil;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
@@ -63,7 +57,7 @@ public class WebApplication {
 
       linkService.saveClientInfo(shortLink, clientInfo);
       response.raw().sendRedirect(linkService.getOriginalByShort(shortLink));
-      return HttpStatus.SC_MOVED_TEMPORARILY;
+      return 302;
     });
 
     post("/statistic/calculate", (request, response) -> {
@@ -71,7 +65,7 @@ public class WebApplication {
           LinkUtil.normalizeUniqueLinkFromShortLink(request.raw().getParameter("shortUrl"),
               request.raw().getRequestURL(), request.raw().getRequestURI());
       Statistic statistic = statisticService.getStatisticByShortUlrId(uniqueLinkId);
-      return new HttpResponse<>(HttpStatus.SC_OK, statistic).toJSON();
+      return new HttpResponse<>(200, statistic).toJSON();
     });
   }
 }

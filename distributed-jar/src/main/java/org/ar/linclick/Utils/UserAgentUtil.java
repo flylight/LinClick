@@ -1,4 +1,4 @@
-package org.ar.linclick.util;
+package org.ar.linclick.utils;
 
 import org.ar.linclick.entity.ClientDevice;
 

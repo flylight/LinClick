@@ -5,7 +5,8 @@
     <name>spark-driver</name>
 
     <artifactId>spark-driver</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
+    <version>1.0.0</version>
 
     <parent>
         <artifactId>LinClick</artifactId>
@@ -18,5 +19,21 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.ar.linclick</groupId>
+            <artifactId>distributed-jar</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.10</artifactId>
+            <version>${spark.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 </project>

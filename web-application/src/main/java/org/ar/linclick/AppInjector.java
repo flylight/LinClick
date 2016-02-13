@@ -4,9 +4,6 @@ import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Session;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
-import com.google.inject.Singleton;
-import org.apache.spark.SparkConf;
-import org.apache.spark.api.java.JavaSparkContext;
 import org.ar.linclick.dao.ClientInfoDao;
 import org.ar.linclick.dao.ClientInfoDaoImpl;
 import org.ar.linclick.dao.LinkDao;
@@ -37,8 +34,7 @@ public class AppInjector extends AbstractModule {
   }
 
   @Provides
-  public JavaSparkContext sparkContext(){
-    SparkConf sparkConf = new SparkConf().setAppName("LinClick").setMaster("local");
-    return new JavaSparkContext(sparkConf);
+  public SparkDriver sparkDriver(){
+    return new SparkDriver();
   }
 }
