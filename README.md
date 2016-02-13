@@ -1,4 +1,6 @@
 ##ALL CALCULATION EXCEPT GOE MAP WORKS! 
+NOTICE: Project still in development. Documentation about build and run will be later!
+
 
 # LinClick
 Link click - analytic data based on collected HTTP headers retrieved from redirection flow via provided short URL instead of original. 
@@ -7,41 +9,13 @@ Project developed in scope of Big Data training at Lohika Systems company.
 
 Technologies :
 
-- Spring boot;
+- Google Guice;
 - Apache Cassandra;
 - Apache Spark;
+- Spark Java
+
 - D3.js;
 - Bootsrap.js.
-
-## How to build it
-
-First of all you need installed Java 8 and Apache Maven build tool , then you should get project sources and execute next commant inside project folder:
-
-<code>
-mvn clean install
-</code>
-
-When this command finish their execution you should see next message in your terminal output :
-
-<code>
-[INFO] BUILD SUCCESS
-</code>
-
-Then go into "target" folder and find executable jar file called "LinClick-0.0.1-SNAPSHOT.jar" .
-
-This is your compiled and ready to use application.
-
-## How to run it
-
-To run and use this application you need to download and execute Apache Cassandra Database. Please, go to [original](http://cassandra.apache.org/) web site to get more information.
-
-When you have runned Apache Cassandra then open default database client that is distributed with cassandra server, called "cqlsh" . Inside this application execute all queries by same order from file "DataBaseChema.sql" that located in project sources by next path "src/main/resources/static/sql/". 
-
-This steps will create keyspace and database schema.
-
-P.S. You can just copy all content from file and paste into terminal where "sqlsh" is opened.
-
-Then just execute jar file that you have build in previous section. (You can do it from terminal when execute next command on the same location with jar file <code>java -jar LinClick-0.0.1-SNAPSHOT.jar</code>)
 
 ## How it works
 Bu default this applciation deploy itself on 8080 port, to see application content go into "localhost:8080/" from your browser.
@@ -66,6 +40,3 @@ This application provide total count if clicks and world map where you can see h
 If you scroll down you will see detailed statistic about user devices:
 
 ![Link clicks detailed statistic](http://s11.postimg.org/bxuala203/detailed_map.png) 
-
-
-NOTICE: All calculations works except GEO MAP. GEO MAP part still in development!
