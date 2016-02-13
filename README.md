@@ -12,7 +12,7 @@ Technologies :
 - Google Guice;
 - Apache Cassandra;
 - Apache Spark;
-- Spark Java
+- Spark Java;
 
 - D3.js;
 - Bootsrap.js.
