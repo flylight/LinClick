@@ -5,7 +5,11 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.ar.linclick.entity.ClientInfo;
 import org.ar.linclick.entity.Statistic;
+import org.ar.linclick.functions.PcSeparationFunction;
+import org.ar.linclick.functions.PhoneSeparationFunction;
+import org.ar.linclick.functions.reducers.SummarizeIntValues;
 import org.ar.linclick.utils.UserAgentUtil;
+import scala.Tuple2;
 
 import java.util.List;
 
@@ -22,30 +26,26 @@ public class SparkDriver {
 
   public Statistic getStatisticByShortUlrId(List<ClientInfo> allData) {
     Statistic statistic = new Statistic();
-
     statistic.setTotalClicks(allData.size());
 
     JavaRDD<ClientInfo> processingData = sparkContext.parallelize(allData);
     processingData.cache();
 
-    //Separate all clicks by two group
-    JavaRDD<ClientInfo> phoneClicks = processingData.filter(
-        clientInfo -> clientInfo.getClientDevice().getPlatform()
-            .equals(UserAgentUtil.DevicePlatform.MOBILE.name()));
 
-    JavaRDD<ClientInfo> pcClicks = processingData.filter(
-        clientInfo -> clientInfo.getClientDevice().getPlatform()
-            .equals(UserAgentUtil.DevicePlatform.PC.name())
-    );
+    List<Tuple2<String, Integer>> countPlatforms = processingData.mapToPair(clientInfo -> new Tuple2<>(clientInfo.getClientDevice().getPlatform(), 1))
+        .reduceByKey(new SummarizeIntValues()).collect();
 
-    statistic.setPhoneClicks((int) phoneClicks.count());
-    statistic.setPcClicks((int) pcClicks.count());
+    List<Tuple2<String, Integer>> countMobileOs = processingData
+        .filter(clientInfo -> clientInfo.getClientDevice().getPlatform().equals(UserAgentUtil.DevicePlatform.MOBILE.name()))
+        .mapToPair(clientInfo -> new Tuple2<>(clientInfo.getClientDevice().getOs(), 1))
+        .reduceByKey(new SummarizeIntValues()).collect();
 
-    //Calculate all phone statistic
-    calculatePhoneStatistic(statistic, phoneClicks);
-    //Calculate PC statistic
-    calculatePcStatistic(statistic, pcClicks);
-    //Calculate Percentages
+    List<Tuple2<String, Integer>> countPcOs = processingData
+        .filter(clientInfo -> clientInfo.getClientDevice().getPlatform().equals(UserAgentUtil.DevicePlatform.PC.name()))
+        .mapToPair(clientInfo -> new Tuple2<>(clientInfo.getClientDevice().getOs(), 1))
+        .reduceByKey(new SummarizeIntValues()).collect();
+
+
     calculatePercentageParts(statistic);
 
     //TODO Implement ... EMPTY (For now)
@@ -53,38 +53,6 @@ public class SparkDriver {
     return statistic;
   }
 
-  public void calculatePhoneStatistic(Statistic statistic, JavaRDD<ClientInfo> clicksInfo){
-    statistic.setPhoneAndroidClicks((int) clicksInfo.filter(
-        clickInfo -> clickInfo.getClientDevice().getOs()
-            .equals(UserAgentUtil.DeviceOS.ANDROID.name())).count());
-    statistic.setPhoneJavaClicks((int) clicksInfo.filter(
-        clickInfo -> clickInfo.getClientDevice().getOs()
-            .equals(UserAgentUtil.DeviceOS.JAVA.name())).count());
-    statistic.setPhoneWinmobClicks((int) clicksInfo.filter(
-        clickInfo -> clickInfo.getClientDevice().getOs()
-            .equals(UserAgentUtil.DeviceOS.WINDOWS.name())).count());
-    statistic.setPhoneIOSClicks((int) clicksInfo.filter(
-        clickInfo -> clickInfo.getClientDevice().getOs()
-            .equals(UserAgentUtil.DeviceOS.IOS.name())).count());
-    statistic.setPhoneUnknownClicks((int) clicksInfo.filter(
-        clickInfo -> clickInfo.getClientDevice().getOs()
-            .equals(UserAgentUtil.DeviceOS.UNKNOWN.name())).count());
-  }
-
-  public void calculatePcStatistic(Statistic statistic, JavaRDD<ClientInfo> clicksInfo){
-    statistic.setPcLinuxClicks((int) clicksInfo.filter(
-        clickInfo -> clickInfo.getClientDevice().getOs()
-            .equals(UserAgentUtil.DeviceOS.LINUX.name())).count());
-    statistic.setPcWindowsClicks((int) clicksInfo.filter(
-        clickInfo -> clickInfo.getClientDevice().getOs()
-            .equals(UserAgentUtil.DeviceOS.WINDOWS.name())).count());
-    statistic.setPcMacosClicks((int) clicksInfo.filter(
-        clickInfo -> clickInfo.getClientDevice().getOs()
-            .equals(UserAgentUtil.DeviceOS.MACOS.name())).count());
-    statistic.setPcUnknownClicks((int) clicksInfo.filter(
-        clickInfo -> clickInfo.getClientDevice().getOs()
-            .equals(UserAgentUtil.DeviceOS.UNKNOWN.name())).count());
-  }
 
   public void calculatePercentageParts(Statistic statistic){
     if(statistic.getTotalClicks() > 0) {
