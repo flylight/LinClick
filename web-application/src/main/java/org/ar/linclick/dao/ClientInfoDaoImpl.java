@@ -28,20 +28,4 @@ public class ClientInfoDaoImpl implements ClientInfoDao {
     databaseSession.execute(statement.bind(System.currentTimeMillis(),shortUrlId, clientInfo.getIp(),
         clientInfo.getClientDevice().getOs(),clientInfo.getClientDevice().getPlatform()));
   }
-
-  @Override
-  public List<ClientInfo> loadClientInfoByShortUrlId(String shortUrlId) {
-    List<ClientInfo> result = new ArrayList<>();
-    PreparedStatement statement = databaseSession
-        .prepare("SELECT date, shortUrlId, ip, os_name, os_platform FROM devices WHERE shortUrlId=?");
-    ResultSet resultSet = databaseSession.execute(statement.bind(shortUrlId));
-    for(Row row : resultSet.all()){
-      ClientInfo clientInfo = new ClientInfo();
-      clientInfo.setClientDevice(
-          new ClientDevice(row.getString("os_platform"), row.getString("os_name")));
-      clientInfo.setIp(row.getString("ip"));
-      result.add(clientInfo);
-    }
-    return result;
-  }
 }

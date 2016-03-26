@@ -8,6 +8,10 @@ import java.io.Serializable;
 public class ClientInfo implements Serializable{
   private String ip;
   private ClientDevice clientDevice;
+  private String countryCode;
+
+  public ClientInfo() {
+  }
 
   public String getIp() {
     return ip;
@@ -23,5 +27,13 @@ public class ClientInfo implements Serializable{
 
   public void setClientDevice(ClientDevice clientDevice) {
     this.clientDevice = clientDevice;
+  }
+
+  public String getCountryCode() {
+    return countryCode;
+  }
+
+  public void setCountryCode(String countryCode) {
+    this.countryCode = countryCode;
   }
 }
