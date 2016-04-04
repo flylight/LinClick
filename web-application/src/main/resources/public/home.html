@@ -49,132 +49,119 @@
         <div class="statistic-panel">
             <div id="map-container" class="panel panel-default" style="height: 300px;">
             </div>
-            <table style="width: 100%;">
-                <tr valign="top">
-                    <td>
+            <div class="row" style="padding: 20px;">
+                <div class="col-sm-10 col-md-6">
+                    <div class="thumbnail">
                         <img src="img/phones.png" alt="Phones"/>
                         <div class="caption">
                             <h2><span id="phonePart">0</span>%</h2>
-                            <h5><span id="phoneClicks">0</span> clicks</h5>
-                            <table style="width: 100%">
-                                <tr>
-                                    <td class="media-left" style="width: 40%">
-                                        <img class="media-object" src="img/android.png" alt="Android devices"/>
-                                    </td>
-                                    <td class="media-body" style="width: 60%">
-                                        <h3><span id="phoneAndroidPart">0</span>%</h3>
-                                        <h6><span id="phoneAndroidClicks">0</span> clicks</h6>
-                                    </td>
-                                </tr>
-                            </table>
+                            <h5 style="border-bottom: 1px solid gray"><span id="phoneClicks">0</span> clicks</h5>
+                            <div class="media" style="border-bottom: 1px solid gray">
+                                <div class="media-left">
+                                    <img class="media-object" src="img/android.png" alt="Android devices"/>
+                                </div>
+                                <div class="media-body">
+                                    <h3><span id="phoneAndroidPart">0</span>%</h3>
+                                    <h6><span id="phoneAndroidClicks">0</span> clicks</h6>
+                                </div>
+                            </div>
 
-                            <table style="width: 100%">
-                                <tr>
-                                    <td class="media-left" style="width: 40%">
-                                        <img class="media-object" src="img/ios.png" alt="iOS devices"/>
-                                    </td>
-                                    <td class="media-body" style="width: 60%">
-                                        <h3><span id="phoneIOSPart">0</span>%</h3>
-                                        <h6><span id="phoneIOSClicks">0</span> clicks</h6>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div class="media" style="border-bottom: 1px solid gray">
+                                <div class="media-left">
+                                    <img class="media-object" src="img/ios.png" alt="iOS devices"/>
+                                </div>
+                                <div class="media-body">
+                                    <h3><span id="phoneIOSPart">0</span>%</h3>
+                                    <h6><span id="phoneIOSClicks">0</span> clicks</h6>
+                                </div>
+                            </div>
 
-                            <table style="width: 100%">
-                                <tr>
-                                    <td class="media-left" style="width: 40%">
-                                        <img class="media-object" src="img/winmobile.png" alt="Windows Mobile devices"/>
-                                    </td>
-                                    <td class="media-body" style="width: 60%">
-                                        <h3><span id="phoneWinmobPart">0</span>%</h3>
-                                        <h6><span id="phoneWinmobClicks">0</span> clicks</h6>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div class="media" style="border-bottom: 1px solid gray">
+                                <div class="media-left">
+                                    <img class="media-object" src="img/winmobile.png" alt="Windows Mobile devices"/>
+                                </div>
+                                <div class="media-body">
+                                    <h3><span id="phoneWinmobPart">0</span>%</h3>
+                                    <h6><span id="phoneWinmobClicks">0</span> clicks</h6>
+                                </div>
+                            </div>
 
-                            <table style="width: 100%">
-                                <tr>
-                                    <td class="media-left" style="width: 40%">
-                                        <img class="media-object" src="img/javamob.png" alt="Java Mobile devices"/>
-                                    </td>
-                                    <td class="media-body" style="width: 60%">
-                                        <h3><span id="phoneJavaPart">0</span>%</h3>
-                                        <h6><span id="phoneJavaClicks">0</span> clicks</h6>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div class="media" style="border-bottom: 1px solid gray">
+                                <div class="media-left">
+                                    <img class="media-object" src="img/javamob.png" alt="Java Mobile devices"/>
+                                </div>
+                                <div class="media-body">
+                                    <h3><span id="phoneJavaPart">0</span>%</h3>
+                                    <h6><span id="phoneJavaClicks">0</span> clicks</h6>
+                                </div>
+                            </div>
 
-                            <table style="width: 100%">
-                                <tr>
-                                    <td class="media-left" style="width: 40%">
-                                        <img class="media-object" src="img/unknown.png" alt="Unknown devices"/>
-                                    </td>
-                                    <td class="media-body" style="width: 60%">
-                                        <h3><span id="phoneUnknownPart">0</span>%</h3>
-                                        <h6><span id="phoneUnknownClicks">0</span> clicks</h6>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div class="media">
+                                <div class="media-left">
+                                    <img class="media-object" src="img/unknown.png" alt="Unknown devices"/>
+                                </div>
+                                <div class="media-body">
+                                    <h3><span id="phoneUnknownPart">0</span>%</h3>
+                                    <h6><span id="phoneUnknownClicks">0</span> clicks</h6>
+                                </div>
+                            </div>
                         </div>
-                    </td>
-                    <td>
+                    </div>
+                </div>
+
+                <div class="col-sm-10 col-md-6">
+                    <div class="thumbnail">
                         <img src="img/pc.png" alt="PC"/>
                         <div class="caption">
                             <h2><span id="pcPart">0</span>%</h2>
-                            <h5><span id="pcClicks">0</span> clicks</h5>
-                            <table style="width: 100%">
-                                <tr>
-                                    <td class="media-left" style="width: 40%">
-                                        <img class="media-object" src="img/linux.png" alt="Linux PC"/>
-                                    </td>
-                                    <td class="media-body" style="width: 60%">
-                                        <h3><span id="pcLinuxPart">0</span>%</h3>
-                                        <h6><span id="pcLinuxClicks">0</span> clicks</h6>
-                                    </td>
-                                </tr>
-                            </table>
+                            <h5 style="border-bottom: 1px solid gray"><span id="pcClicks">0</span> clicks</h5>
+                            <div class="media" style="border-bottom: 1px solid gray">
+                                <div class="media-left">
+                                    <img class="media-object" src="img/linux.png" alt="Linux PC"/>
+                                </div>
+                                <div class="media-body">
+                                    <h3><span id="pcLinuxPart">0</span>%</h3>
+                                    <h6><span id="pcLinuxClicks">0</span> clicks</h6>
+                                </div>
+                            </div>
 
-                            <table style="width: 100%">
-                                <tr>
-                                    <td class="media-left" style="width: 40%">
-                                        <img class="media-object" src="img/macos.png" alt="MacOS PC"/>
-                                    </td>
-                                    <td class="media-body" style="width: 60%">
-                                        <h3><span id="pcMacosPart">0</span>%</h3>
-                                        <h6><span id="pcMacosClicks">0</span> clicks</h6>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div class="media" style="border-bottom: 1px solid gray">
+                                <div class="media-left">
+                                    <img class="media-object" src="img/macos.png" alt="MacOS PC"/>
+                                </div>
+                                <div class="media-body">
+                                    <h3><span id="pcMacosPart">0</span>%</h3>
+                                    <h6><span id="pcMacosClicks">0</span> clicks</h6>
+                                </div>
+                            </div>
 
-                            <table style="width: 100%">
-                                <tr>
-                                    <td class="media-left" style="width: 40%">
-                                        <img class="media-object" src="img/windows.png" alt="Windows PC"/>
-                                    </td>
-                                    <td class="media-body" style="width: 60%">
-                                        <h3><sapan id="pcWindowsPart">0</sapan>%</h3>
-                                        <h6><span id="pcWindowsClicks">0</span> clicks</h6>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div class="media" style="border-bottom: 1px solid gray">
+                                <div class="media-left">
+                                    <img class="media-object" src="img/windows.png" alt="Windows PC"/>
+                                </div>
+                                <div class="media-body">
+                                    <h3><sapan id="pcWindowsPart">0</sapan>%</h3>
+                                    <h6><span id="pcWindowsClicks">0</span> clicks</h6>
+                                </div>
+                            </div>
 
-                            <table style="width: 100%">
-                                <tr>
-                                    <td class="media-left" style="width: 40%">
-                                        <img class="media-object" src="img/unknown.png" alt="Unknown devices"/>
-                                    </td>
-                                    <td class="media-body" style="width: 60%">
-                                        <h3><span id="pcUnknownPart">0</span>%</h3>
-                                        <h6><span id="pcUnknownClicks">0</span> clicks</h6>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div class="media">
+                                <div class="media-left">
+                                    <img class="media-object" src="img/unknown.png" alt="Unknown devices"/>
+                                </div>
+                                <div class="media-body">
+                                    <h3><span id="pcUnknownPart">0</span>%</h3>
+                                    <h6><span id="pcUnknownClicks">0</span> clicks</h6>
+                                </div>
+                            </div>
+
                         </div>
-                    </td>
-                </tr>
-            </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 </div>
 
 <div id="waitModal" class="modal fade" role="dialog">
