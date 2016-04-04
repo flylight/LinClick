@@ -37,6 +37,6 @@ public class AppInjector extends AbstractModule {
   @Provides
   public SparkDriver sparkDriver(){
     return new SparkDriver("spark://127.0.0.1:7077",
-        "/workspace/projects/LinClick/distributed-jar/target/distributed-jar-1.0.0-uber.jar");
+        "/workspace/projects/LinClick/distributed-jar/target/distributed-jar-1.0.0-fat.jar");
   }
 }
