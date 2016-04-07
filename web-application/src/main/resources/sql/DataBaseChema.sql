@@ -1,4 +1,4 @@
-CREATE KEYSPACE LinkClick WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
+CREATE KEYSPACE LinkClick WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 2 };
 
 USE LinkClick;
 
@@ -14,5 +14,3 @@ CREATE TABLE devices (
   os_name text,
   os_platform text
 );
-
-CREATE INDEX ON devices (shortUrlId);

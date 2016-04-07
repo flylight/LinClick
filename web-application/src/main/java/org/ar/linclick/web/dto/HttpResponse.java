@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.Serializable;
 
 /**
- * Created by arymar on 10.12.15.
+ * HTTP response container.
  */
 public class HttpResponse<T>  implements Serializable {
 

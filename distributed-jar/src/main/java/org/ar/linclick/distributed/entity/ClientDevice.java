@@ -3,7 +3,7 @@ package org.ar.linclick.distributed.entity;
 import java.io.Serializable;
 
 /**
- * Created by arymar on 11.12.15.
+ * Client device data cintainer.
  */
 public class ClientDevice implements Serializable {
   private String platform;

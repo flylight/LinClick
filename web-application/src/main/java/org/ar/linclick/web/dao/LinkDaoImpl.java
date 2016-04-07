@@ -6,24 +6,36 @@ import com.datastax.driver.core.Session;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import java.util.Optional;
+
 /**
- * Created by arymar on 11.12.15.
+ * Cassandra Data access layer.
  */
 @Singleton
 public class LinkDaoImpl implements LinkDao {
+  private Optional<PreparedStatement> saveOriginalUrlOptionalStatement;
+  private Optional<PreparedStatement> getOriginalByShortOptionalStatement;
 
   @Inject
   private Session databaseSession;
 
   @Override
   public void saveOriginalUrl(String shortUrlId, String originalUrl) {
-    PreparedStatement statement = databaseSession.prepare("INSERT INTO links (shortUrlId,  originalUrl) VALUES (?, ?)");
+    PreparedStatement statement = saveOriginalUrlOptionalStatement.orElseGet(() -> {
+      saveOriginalUrlOptionalStatement =
+          Optional.of(databaseSession.prepare("INSERT INTO links (shortUrlId,  originalUrl) VALUES (?, ?)"));
+      return saveOriginalUrlOptionalStatement.get();
+    });
     databaseSession.execute(statement.bind(shortUrlId, originalUrl));
   }
 
   @Override
   public String loadOriginalUrlByShortUrlId(String shortUrlId) {
-    PreparedStatement statement = databaseSession.prepare("SELECT originalUrl FROM links WHERE shortUrlId=?");
+    PreparedStatement statement = getOriginalByShortOptionalStatement.orElseGet(() -> {
+      getOriginalByShortOptionalStatement =
+          Optional.of(databaseSession.prepare("SELECT originalUrl FROM links WHERE shortUrlId=?"));
+      return getOriginalByShortOptionalStatement.get();
+    });
     ResultSet resultSet = databaseSession.execute(statement.bind(shortUrlId));
     return resultSet.one().getString("originalUrl");
   }

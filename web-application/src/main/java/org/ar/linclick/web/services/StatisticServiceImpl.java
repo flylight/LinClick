@@ -13,13 +13,10 @@ import scala.Tuple2;
 import java.util.List;
 
 /**
- * Created by arymar on 04.01.16.
+ * Statistic service.
  */
 @Singleton
 public class StatisticServiceImpl implements StatisticService {
-  @Inject
-  private ClientInfoDao clientInfoDao;
-
   @Inject
   private SparkDriver sparkContext;
 
@@ -35,7 +32,7 @@ public class StatisticServiceImpl implements StatisticService {
     return statistic;
   }
 
-  public Object[][] mapCountryStatistic(List<Tuple2<String, Integer>> countryStatistic){
+  private Object[][] mapCountryStatistic(List<Tuple2<String, Integer>> countryStatistic){
     Object[][] countries = new Object[countryStatistic.size()][2];
     for (int i = 0; i < countryStatistic.size(); i++) {
       Tuple2<String, Integer> countryData = countryStatistic.get(i);

@@ -3,7 +3,7 @@ package org.ar.linclick.web.entity;
 import java.io.Serializable;
 
 /**
- * Statistic container
+ * Statistic data container
  */
 public class Statistic implements Serializable {
 

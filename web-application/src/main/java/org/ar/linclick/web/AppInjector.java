@@ -15,7 +15,7 @@ import org.ar.linclick.web.services.StatisticService;
 import org.ar.linclick.web.services.StatisticServiceImpl;
 
 /**
- * Created by arymar on 13.02.16.
+ * Google Guice injection instances declarations.
  */
 public class AppInjector extends AbstractModule {
 
@@ -36,7 +36,8 @@ public class AppInjector extends AbstractModule {
 
   @Provides
   public SparkDriver sparkDriver(){
-    return new SparkDriver("spark://127.0.0.1:7077",
-        "/workspace/projects/LinClick/distributed-jar/target/distributed-jar-1.0.0-fat.jar");
+    return new SparkDriver("spark://127.0.0.1:7077", "127.0.0.1",
+        new String[]{
+            "/workspace/projects/LinClick/distributed-jar/target/distributed-jar-1.0.0-fat.jar"});
   }
 }

@@ -1,7 +1,7 @@
 package org.ar.linclick.web.dao;
 
 /**
- * Created by arymar on 11.12.15.
+ * Link Data access layer.
  */
 public interface LinkDao {
 

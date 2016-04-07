@@ -17,14 +17,14 @@ import static spark.Spark.post;
 import static spark.Spark.staticFileLocation;
 
 /**
- * Created by arymar on 13.02.16.
+ * Main class that initialize and configure REST endpoints and resolve dependencies..
  */
-public class WebApplication {
+public class ApplicationConfigurator {
 
   private LinkService linkService;
   private StatisticService statisticService;
 
-  public WebApplication(){
+  public ApplicationConfigurator(){
     configureDependencyInjections();
     configureRestEndpoints();
   }

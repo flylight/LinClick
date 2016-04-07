@@ -7,7 +7,7 @@ import org.ar.linclick.web.dao.LinkDao;
 import org.ar.linclick.distributed.entity.ClientInfo;
 
 /**
- * Created by arymar on 10.12.15.
+ * URL link service.
  */
 @Singleton
 public class LinkServiceImpl implements LinkService {

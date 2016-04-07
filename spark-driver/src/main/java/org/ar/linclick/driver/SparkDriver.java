@@ -20,15 +20,16 @@ import java.util.List;
  * Apache spark driver and statistic processing pipeline.
  */
 public class SparkDriver {
+  private static final String SPARK_APP_NAME = "LinClick";
+  private static final String CASSANDRA_HOST_PROPERTY = "spark.cassandra.connection.host";
 
   private final JavaSparkContext sparkContext;
   private final CassandraReader cassandraReader;
 
-  public SparkDriver(String masterNodePath, String... jarsPaths){
-    SparkConf sparkConf = new SparkConf().setAppName("LinClick")
+  public SparkDriver(String masterNodePath, String cassandraHost, String[] jarsPaths){
+    SparkConf sparkConf = new SparkConf().setAppName(SPARK_APP_NAME)
         .setMaster(masterNodePath)
-        .set("spark.cassandra.connection.host", "127.0.0.1")
-        .setJars(jarsPaths);
+        .set(CASSANDRA_HOST_PROPERTY, cassandraHost).setJars(jarsPaths);
     this.sparkContext = new JavaSparkContext(sparkConf);
     this.cassandraReader = new CassandraReader(sparkContext);
   }

@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Client Info pricessing result.
+ * Client Info processing result.
  */
 public class ClientInfoResult implements Serializable{
   private final List<Tuple2<String, Integer>> platformCounter;

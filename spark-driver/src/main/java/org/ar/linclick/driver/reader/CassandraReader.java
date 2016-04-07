@@ -12,6 +12,8 @@ import org.ar.linclick.distributed.function.mappers.MapCassandraResultsToClientI
  * Cassandra Reader pipeline. Read results from cassandra by Short URL Id.
  */
 public class CassandraReader {
+  private static final String NAME_SPACE = "linkclick";
+  private static final String TABLE = "devices";
 
   private JavaSparkContext javaSparkContext;
 
@@ -20,9 +22,8 @@ public class CassandraReader {
   }
 
   public JavaRDD<ClientInfo> readClientInfoData(String shortUrlId){
-    return CassandraJavaUtil.javaFunctions(javaSparkContext).cassandraTable("linkclick", "devices")
-        .filter(new FilterClicksByShortUrlId(shortUrlId))
-        .map(new MapCassandraResultsToClientInfo());
+    return CassandraJavaUtil.javaFunctions(javaSparkContext).cassandraTable(NAME_SPACE, TABLE)
+        .filter(new FilterClicksByShortUrlId(shortUrlId)).map(new MapCassandraResultsToClientInfo());
   }
 
 }

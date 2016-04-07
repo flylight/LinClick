@@ -6,19 +6,25 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import org.ar.linclick.distributed.entity.ClientInfo;
 
+import java.util.Optional;
+
 /**
- * Created by arymar on 11.12.15.
+ * Cassandra Client Info Data Access Layer.
  */
 @Singleton
 public class ClientInfoDaoImpl implements ClientInfoDao {
+  private Optional<PreparedStatement> insertClientInfoOptionalStatement;
 
   @Inject
   private Session databaseSession;
 
   @Override
   public void saveClientInfo(String shortUrlId, ClientInfo clientInfo) {
-    PreparedStatement statement = databaseSession
-        .prepare("INSERT INTO devices (date, shortUrlId, ip, os_name, os_platform) VALUES (?, ?, ?, ?, ?)");
+    PreparedStatement statement = insertClientInfoOptionalStatement.orElseGet(() -> {
+      insertClientInfoOptionalStatement = Optional.of(databaseSession
+          .prepare("INSERT INTO devices (date, shortUrlId, ip, os_name, os_platform) VALUES (?, ?, ?, ?, ?)"));
+      return insertClientInfoOptionalStatement.get();
+    });
     databaseSession.execute(statement.bind(System.currentTimeMillis(),shortUrlId, clientInfo.getIp(),
         clientInfo.getClientDevice().getOs(),clientInfo.getClientDevice().getPlatform()));
   }

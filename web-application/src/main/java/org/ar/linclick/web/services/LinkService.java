@@ -3,7 +3,7 @@ package org.ar.linclick.web.services;
 import org.ar.linclick.distributed.entity.ClientInfo;
 
 /**
- * Created by arymar on 10.12.15.
+ * URL link service.
  */
 public interface LinkService {
 

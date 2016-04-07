@@ -3,7 +3,7 @@ package org.ar.linclick.distributed.util;
 import org.ar.linclick.distributed.entity.ClientDevice;
 
 /**
- * Created by arymar on 11.12.15.
+ * Util that resolve HTTP user agent.
  */
 public final class UserAgentUtil {
 

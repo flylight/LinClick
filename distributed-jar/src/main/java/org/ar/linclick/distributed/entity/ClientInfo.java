@@ -3,7 +3,7 @@ package org.ar.linclick.distributed.entity;
 import java.io.Serializable;
 
 /**
- * Created by arymar on 11.12.15.
+ * Client info data container.
  */
 public class ClientInfo implements Serializable {
   private String ip;
