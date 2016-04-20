@@ -31,7 +31,7 @@ public class Statistic implements Serializable {
   }
 
   public int getPhonePart() {
-    return totalClicks > 0 ? (phoneClicks / totalClicks) * 100 : 0;
+    return totalClicks > 0 ? (phoneClicks * 100 ) / totalClicks : 0;
   }
 
   public int getPhoneClicks() {
@@ -43,7 +43,7 @@ public class Statistic implements Serializable {
   }
 
   public int getPhoneAndroidPart() {
-    return phoneClicks > 0 ? (phoneAndroidClicks / phoneClicks) * 100 : 0;
+    return phoneClicks > 0 ? (phoneAndroidClicks * 100) / phoneClicks : 0;
   }
 
   public int getPhoneAndroidClicks() {
@@ -55,7 +55,7 @@ public class Statistic implements Serializable {
   }
 
   public int getPhoneIOSPart() {
-    return phoneClicks > 0 ? (phoneIOSClicks / phoneClicks) * 100 : 0;
+    return phoneClicks > 0 ? (phoneIOSClicks * 100) / phoneClicks : 0;
   }
 
   public int getPhoneIOSClicks() {
@@ -63,7 +63,7 @@ public class Statistic implements Serializable {
   }
 
   public int getPhoneWinmobPart() {
-    return phoneClicks > 0 ? (phoneWinmobClicks / phoneClicks) * 100 : 0;
+    return phoneClicks > 0 ? (phoneWinmobClicks * 100) / phoneClicks : 0;
   }
 
   public int getPhoneWinmobClicks() {
@@ -75,7 +75,7 @@ public class Statistic implements Serializable {
   }
 
   public int getPhoneJavaPart() {
-    return phoneClicks > 0 ? (phoneJavaClicks / phoneClicks) * 100 : 0;
+    return phoneClicks > 0 ? (phoneJavaClicks * 100) / phoneClicks : 0;
   }
 
   public int getPhoneJavaClicks() {
@@ -87,7 +87,7 @@ public class Statistic implements Serializable {
   }
 
   public int getPhoneUnknownPart() {
-    return phoneClicks > 0 ? (phoneUnknownClicks / phoneClicks) * 100 : 0;
+    return phoneClicks > 0 ? (phoneUnknownClicks * 100) / phoneClicks : 0;
   }
 
   public int getPhoneUnknownClicks() {
@@ -99,7 +99,7 @@ public class Statistic implements Serializable {
   }
 
   public int getPcPart() {
-    return totalClicks > 0 ? (pcClicks / totalClicks) * 100 : 0;
+    return totalClicks > 0 ? (pcClicks * 100) / totalClicks : 0;
   }
 
   public int getPcClicks() {
@@ -111,7 +111,7 @@ public class Statistic implements Serializable {
   }
 
   public int getPcLinuxPart() {
-    return pcClicks > 0 ? (pcLinuxClicks / pcClicks) * 100 : 0;
+    return pcClicks > 0 ? (pcLinuxClicks * 100) / pcClicks : 0;
   }
 
   public int getPcLinuxClicks() {
@@ -123,7 +123,7 @@ public class Statistic implements Serializable {
   }
 
   public int getPcMacosPart() {
-    return pcClicks > 0 ? (pcMacosClicks / pcClicks) * 100 : 0;
+    return pcClicks > 0 ? (pcMacosClicks * 100) / pcClicks : 0;
   }
 
   public int getPcMacosClicks() {
@@ -135,7 +135,7 @@ public class Statistic implements Serializable {
   }
 
   public int getPcWindowsPart() {
-    return pcClicks > 0 ? (pcWindowsClicks / pcClicks) * 100 : 0;
+    return pcClicks > 0 ? (pcWindowsClicks * 100) / pcClicks : 0;
   }
 
   public int getPcWindowsClicks() {
@@ -147,7 +147,7 @@ public class Statistic implements Serializable {
   }
 
   public int getPcUnknownPart() {
-    return pcClicks > 0 ? (pcUnknownClicks / pcClicks) * 100 : 0;
+    return pcClicks > 0 ? (pcUnknownClicks * 100) / pcClicks : 0;
   }
 
   public int getPcUnknownClicks() {

@@ -13,7 +13,7 @@ import java.util.Optional;
  */
 @Singleton
 public class ClientInfoDaoImpl implements ClientInfoDao {
-  private Optional<PreparedStatement> insertClientInfoOptionalStatement;
+  private Optional<PreparedStatement> insertClientInfoOptionalStatement = Optional.empty();
 
   @Inject
   private Session databaseSession;

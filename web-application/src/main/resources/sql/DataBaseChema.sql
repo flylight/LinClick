@@ -1,4 +1,4 @@
-CREATE KEYSPACE LinkClick WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 2 };
+CREATE KEYSPACE LinkClick WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
 
 USE LinkClick;
 

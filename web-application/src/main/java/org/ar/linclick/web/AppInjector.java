@@ -19,6 +19,11 @@ import org.ar.linclick.web.services.StatisticServiceImpl;
  */
 public class AppInjector extends AbstractModule {
 
+  private static final String CASSANDRA_CLUSTER_NODE = "172.22.61.115";
+  private static final String CASSANDRA_NAMESPACE = "LinkClick";
+  private static final String SPARK_MASTER_NODE = "spark://172.22.61.115:7077";
+  private static final String SPARK_DISTRIBUTED_JAR_PATH = "/workspace/projects/LinClick/distributed-jar/target/distributed-jar-1.0.0-fat.jar";
+
   @Override
   protected void configure() {
     bind(ClientInfoDao.class).to(ClientInfoDaoImpl.class);
@@ -30,14 +35,13 @@ public class AppInjector extends AbstractModule {
 
   @Provides
   public Session databaseSession(){
-    Cluster cluster = Cluster.builder().addContactPoint("127.0.0.1").build();
-    return cluster.connect("LinkClick");
+    Cluster cluster = Cluster.builder().addContactPoint(CASSANDRA_CLUSTER_NODE).build();
+    return cluster.connect(CASSANDRA_NAMESPACE);
   }
 
   @Provides
   public SparkDriver sparkDriver(){
-    return new SparkDriver("spark://127.0.0.1:7077", "127.0.0.1",
-        new String[]{
-            "/workspace/projects/LinClick/distributed-jar/target/distributed-jar-1.0.0-fat.jar"});
+    return new SparkDriver(SPARK_MASTER_NODE, CASSANDRA_CLUSTER_NODE,
+        new String[]{SPARK_DISTRIBUTED_JAR_PATH});
   }
 }

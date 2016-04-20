@@ -13,8 +13,8 @@ import java.util.Optional;
  */
 @Singleton
 public class LinkDaoImpl implements LinkDao {
-  private Optional<PreparedStatement> saveOriginalUrlOptionalStatement;
-  private Optional<PreparedStatement> getOriginalByShortOptionalStatement;
+  private Optional<PreparedStatement> saveOriginalUrlOptionalStatement = Optional.empty();
+  private Optional<PreparedStatement> getOriginalByShortOptionalStatement = Optional.empty();
 
   @Inject
   private Session databaseSession;
